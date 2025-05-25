@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import stack.Stack;
 import queue.Queue;
+import linkedlist.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
@@ -97,14 +98,56 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.println("Linked List selected (coming soon)");
+                    System.out.println("Linked List selected.");
+                    LinkedList myList = new LinkedList();
+                    int listChoice;
+                    do {
+                        System.out.println("\n--- Linked List Menu ---");
+                        System.out.println("1. Insert");
+                        System.out.println("2. Delete");
+                        System.out.println("3. Search");
+                        System.out.println("4. Print List");
+                        System.out.println("0. Back to Main Menu");
+                        System.out.print("Choose an operation: ");
+                        listChoice = scanner.nextInt();
+
+                        switch (listChoice) {
+                            case 1:
+                                System.out.print("Enter value to insert: ");
+                                int insertVal = scanner.nextInt();
+                                myList.insert(insertVal);
+                                break;
+                            case 2:
+                                System.out.print("Enter value to delete: ");
+                                int deleteVal = scanner.nextInt();
+                                myList.delete(deleteVal);
+                                break;
+                            case 3:
+                                System.out.print("Enter value to search: ");
+                                int searchVal = scanner.nextInt();
+                                boolean found = myList.search(searchVal);
+                                System.out.println(found ? "Found in list." : "Not found in list.");
+                                break;
+                            case 4:
+                                myList.printList();
+                                break;
+                            case 0:
+                                System.out.println("Returning to Main Menu...");
+                                break;
+                            default:
+                                System.out.println("Invalid choice.");
+                        }
+                    } while (listChoice != 0);
                     break;
+
                 case 4:
                     System.out.println("BST selected (coming soon)");
                     break;
+
                 case 0:
                     System.out.println("Exiting...");
                     break;
+
                 default:
                     System.out.println("Invalid option. Try again.");
             }
