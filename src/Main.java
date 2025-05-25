@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import stack.Stack;
+import queue.Queue;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,7 +20,7 @@ public class Main {
             switch (choice) {
                 case 1:
                     System.out.println("Stack selected.");
-                    Stack myStack = new Stack(5); // fixed-size stack
+                    Stack myStack = new Stack(5);
                     int stackChoice;
                     do {
                         System.out.println("\n--- Stack Menu ---");
@@ -57,8 +58,44 @@ public class Main {
                     break;
 
                 case 2:
-                    System.out.println("Queue selected (coming soon)");
+                    System.out.println("Queue selected.");
+                    Queue myQueue = new Queue(5);
+                    int queueChoice;
+                    do {
+                        System.out.println("\n--- Queue Menu ---");
+                        System.out.println("1. Enqueue");
+                        System.out.println("2. Dequeue");
+                        System.out.println("3. Peek");
+                        System.out.println("4. Print Queue");
+                        System.out.println("0. Back to Main Menu");
+                        System.out.print("Choose an operation: ");
+                        queueChoice = scanner.nextInt();
+
+                        switch (queueChoice) {
+                            case 1:
+                                System.out.print("Enter value to enqueue: ");
+                                int value = scanner.nextInt();
+                                myQueue.enqueue(value);
+                                break;
+                            case 2:
+                                myQueue.dequeue();
+                                break;
+                            case 3:
+                                int peek = myQueue.peek();
+                                if (peek != -1) System.out.println("Front of queue: " + peek);
+                                break;
+                            case 4:
+                                myQueue.printQueue();
+                                break;
+                            case 0:
+                                System.out.println("Returning to Main Menu...");
+                                break;
+                            default:
+                                System.out.println("Invalid choice.");
+                        }
+                    } while (queueChoice != 0);
                     break;
+
                 case 3:
                     System.out.println("Linked List selected (coming soon)");
                     break;
